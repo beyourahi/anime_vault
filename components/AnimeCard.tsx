@@ -1,7 +1,26 @@
 import Image from "next/image";
+import { MotionDiv } from "./MotionDiv";
 
-export const AnimeCard = ({ anime }: AnimeCard) => (
-    <div className="relative w-full max-w-sm rounded">
+const stagger = 0.25;
+
+const variants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 }
+};
+
+export const AnimeCard = ({ anime, index }: AnimeCard) => (
+    <MotionDiv
+        variants={variants}
+        initial="hidden"
+        animate="visible"
+        transition={{
+            delay: index * stagger,
+            ease: "easeInOut",
+            duration: 0.5
+        }}
+        viewport={{ amount: 0 }}
+        className="relative w-full max-w-sm rounded"
+    >
         <div className="relative h-[37vh] w-full">
             <Image
                 src={`https://shikimori.one${anime.image.original}`}
@@ -42,5 +61,5 @@ export const AnimeCard = ({ anime }: AnimeCard) => (
                 </div>
             </div>
         </div>
-    </div>
+    </MotionDiv>
 );
