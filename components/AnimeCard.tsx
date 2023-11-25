@@ -3,7 +3,12 @@ import Image from "next/image";
 export const AnimeCard = ({ anime }: AnimeCard) => (
     <div className="relative w-full max-w-sm rounded">
         <div className="relative h-[37vh] w-full">
-            <Image src={anime.image.original} alt={anime.name} fill className="rounded-xl" />
+            <Image
+                src={`https://shikimori.one${anime.image.original}`}
+                alt={anime.name}
+                fill
+                className="rounded-xl object-cover"
+            />
         </div>
         <div className="flex flex-col gap-3 py-4">
             <div className="flex items-center justify-between gap-1">
